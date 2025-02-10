@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- 관리자 SQL Mapper -->
+<mapper namespace="kr.co.personal.schedule.dao.UserMapper">
+    <select id="loginAuthentication" parameterType="kr.co.personal.schedule.domain.UserBean" resultType="kr.co.personal.schedule.domain.UserBean">
+        SELECT
+            USER_IDX,
+            USER_ID,
+            USER_NAME,
+            NAME,
+            PASSWORD,
+            EMAIL,
+            PHONE
+        FROM
+            USERS
+        WHERE
+            USER_ID = #{userId}
+    </select>
+    <select id="selectAdminAuthorities" parameterType="kr.co.personal.schedule.domain.UserBean" resultType="kr.co.personal.schedule.domain.UserBean">
+        /* [AdminMapper.xml][AdminMapper.selectAdminAuthorities][2019.01.22] */
+        SELECT
+            ROLE as AUTHORITY
+        FROM USERS
+        WHERE
+            USER_ID = #{userId}
+    </select>
+</mapper>
