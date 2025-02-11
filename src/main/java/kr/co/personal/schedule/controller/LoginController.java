@@ -80,7 +80,8 @@ public class LoginController {
         if(bindingResult.hasErrors()) {
             return "auth/login";
         }
-        final String token = jwtTokenProvider.generateToken(loginId);
+
+        final String token = jwtTokenProvider.generateToken(loginId, String.valueOf(user.getUserIdx()));
         CookieUtil.addCookie(res, "X-AUTH-TOKEN-ADM", token, 60 * 60 * 24);
         res.sendRedirect("/");
         return null;

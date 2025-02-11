@@ -31,12 +31,12 @@ public class JwtTokenProvider {
 
     private static final String userIdx = "userIdx";
     private static final String userId = "userId";
-    public String generateToken(String user) {
+    public String generateToken(String user, String userSeq) {
 
         final Date now = new Date();
         final Date expireDate = new Date(now.getTime() + jwtExpirationMsec);
         final Claims claims = Jwts.claims().setSubject(user);
-        claims.put(userIdx, '1');
+        claims.put(userIdx, userSeq);
         claims.put(userId, user);
 
         return Jwts.builder()

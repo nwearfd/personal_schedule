@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.personal.schedule.dao.UserMapper">
     <select id="loginAuthentication" parameterType="kr.co.personal.schedule.domain.UserBean" resultType="kr.co.personal.schedule.domain.UserBean">
         SELECT
-            USER_IDX,
+            USER_IDX userIdx,
             USER_ID,
             USER_NAME,
             NAME,
