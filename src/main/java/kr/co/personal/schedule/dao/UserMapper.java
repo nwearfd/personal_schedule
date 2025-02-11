@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserMapper {
     UserBean loginAuthentication(UserBean user);
     List<AuthBean> selectAdminAuthorities(UserBean user);
+    void insertUser(UserBean user);
 }

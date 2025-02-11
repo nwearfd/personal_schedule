@@ -79,6 +79,19 @@
             margin-bottom: 20px;
             color: #333;
         }
+        .register-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff; /* 파란색 */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px; /* 위쪽 여백 추가 */
+        }
+
+        .register-button:hover {
+            background-color: #0056b3; /* 진한 파란색 */
+        }
     </style>
 </head>
 <body>
@@ -94,6 +107,7 @@
         </div>
     </div>
 </form>
+    <a th:href="@{/user/register}" class="register-button">회원 가입</a>
 </div>
 
 </body>

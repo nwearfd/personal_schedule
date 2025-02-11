@@ -9,6 +9,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -45,5 +47,12 @@ public class UserService {
         UserBean user = userMapper.loginAuthentication(userBean);
 
         return user;
+    }
+    public void registerUser(UserBean user) {
+        PasswordEncoder passwordEncode = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncode.encode(user.getPassword()); // 비밀번호 암호화
+        user.setPassword(encodedPassword); // 암호화된 비밀번호 설정
+        user.setUserName(user.getName());
+        userMapper.insertUser(user); // UserMapper의 insertUser 메서드 사용
     }
 }

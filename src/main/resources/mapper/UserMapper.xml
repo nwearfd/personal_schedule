@@ -25,4 +25,23 @@
         WHERE
             USER_ID = #{userId}
     </select>
+    <insert id="insertUser" parameterType="kr.co.personal.schedule.domain.UserBean">
+        INSERT INTO USERS (
+            USER_ID,
+            USER_NAME,
+            PASSWORD,
+            NAME,
+            EMAIL,
+            PHONE,
+            ROLE
+        ) VALUES (
+                     #{userId},
+                     #{userName},
+                     #{password},
+                     #{name},
+                     #{email},
+                     #{phone},
+                     '01'
+                 )
+    </insert>
 </mapper>

@@ -14,7 +14,7 @@ public class ScheduleBean {
     public Integer userIdx;
     public String title;
     public String content;
-    public String startDate;
-    public String endDate;
+    public LocalDateTime startDate;
+    public LocalDateTime endDate;
     public String location;
 }

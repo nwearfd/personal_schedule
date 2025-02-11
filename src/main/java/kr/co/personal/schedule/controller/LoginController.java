@@ -69,16 +69,13 @@ public class LoginController {
         String password = passwordEncode.encode("1234");
         final String loginId = userBean.getUserId();
         final String inputPw = userBean.getPassword();
-//        UserBean user = userService.loginUserInfo(userBean);
-//        if(user == null) {
-//            bindingResult.addError(new ObjectError("result", "ID, 비밀번호를 확인해주세요"));
-//        } else {
-//        }
-        if(!passwordEncode.matches(inputPw, password)) {
+        UserBean user = userService.loginUserInfo(userBean);
+        if(user == null) {
             bindingResult.addError(new ObjectError("result", "ID, 비밀번호를 확인해주세요"));
-        }
-        if(!loginId.equals("test")) {
-            bindingResult.addError(new ObjectError("result", "ID, 비밀번호를 확인해주세요"));
+        } else {
+            if(!passwordEncode.matches(inputPw, user.getPassword())) {
+                bindingResult.addError(new ObjectError("result", "ID, 비밀번호를 확인해주세요"));
+            }
         }
         if(bindingResult.hasErrors()) {
             return "auth/login";
