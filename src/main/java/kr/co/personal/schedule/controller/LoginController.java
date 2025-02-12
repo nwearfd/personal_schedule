@@ -47,20 +47,6 @@ public class LoginController {
 
     @PostMapping("/loginProc")
     public String loginProc(@ModelAttribute("userBean") UserBean userBean, BindingResult bindingResult, HttpServletResponse res) throws IOException {
-//        PasswordEncoder passwordEncode = new BCryptPasswordEncoder();
-//        String password = passwordEncode.encode("abcd1234!");
-//        final String inputPw = userBean.getPassword();
-//        final String loginId = userBean.getUserId();
-//        if(!passwordEncoder.matches(inputPw, password)) {
-//            System.out.println("비밀번호 확인");
-//            res.sendRedirect("/login");
-//            return null;
-//        }
-//        String userId = "admin";
-//        final String token = jwtTokenProvider.generateToken(userId);
-//        CookieUtil.addCookie(res, "X-AUTH-TOKEN-ADM", token, 60 * 60 * 24);
-//        res.sendRedirect("/");
-//        return null;
 
         if(bindingResult.hasErrors()) {
             return "auth/login";
